@@ -1,0 +1,22 @@
+name = "taka-giveaway"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# 実際のサイトURLに変更。末尾に / を付けない。複数はカンマ区切り。
+ALLOWED_ORIGINS = "https://YOUR-DOMAIN.com"
+# Turnstileで許可したホスト名。スキームや / は付けない。
+TURNSTILE_HOSTNAMES = "YOUR-DOMAIN.com"
+# 本番は必ず false。true も localhost の Origin でしか本人確認を省略しない。
+DEV_MODE = "false"
+
+[[durable_objects.bindings]]
+name = "GIVEAWAY"
+class_name = "Giveaway"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Giveaway"]
+
+# ADMIN_TOKEN / TURNSTILE_SECRET は wrangler secret put で登録する。
+# ソースコードや vars には絶対に書かない。

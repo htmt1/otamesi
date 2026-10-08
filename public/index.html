@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="おもしろそうなこと試す場所">
+  <meta name="referrer" content="no-referrer"><title>たかのぺーじ</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body class="minimal-page">
+  <main class="home">
+    <h1>たかのぺーじ</h1>
+    <p id="bio" class="home-description">おもしろそうなこと試す場所</p>
+    <section class="distribution" aria-labelledby="distribution-title">
+      <div class="distribution-row">
+        <h2 id="distribution-title">アイテム定期配布</h2>
+        <button id="claim" class="primary" disabled>補充中…</button>
+      </div>
+      <div id="verification"></div>
+      <p id="status-message" class="sr-only" role="status" aria-live="polite"></p>
+    </section>
+    <button id="admin-open" class="admin-open" type="button">管理</button>
+  </main>
+  <dialog id="admin-dialog" class="admin-dialog"><div class="admin"><div class="admin-top"><h2>配布管理</h2><button id="admin-close" class="admin-close" type="button" aria-label="管理画面を閉じる">閉じる</button></div><section id="login-section"><form id="login"><label for="admin-token">パスワード</label><input id="admin-token" type="password" autocomplete="off" required placeholder="パスワードを入力"><p class="small">閉じると自動でログアウトします。</p><button class="primary">ログイン</button></form></section><p id="message" role="status" aria-live="polite"></p><div id="dashboard" hidden><section><div class="stats"><div><strong id="queued">0</strong><span>ストック</span></div><div><strong id="claimed">0</strong><span>受け取り済み</span></div><div><strong id="mode">—</strong><span>配布状況</span></div></div><p id="next-time" class="small"></p><div class="actions"><button id="pause" class="secondary">配布を一時停止</button><button id="logout" class="secondary">ログアウト</button></div></section><section><h2>リンクを追加</h2><form id="add"><label for="title">アイテム名</label><input id="title" maxlength="80" required placeholder="例：ゲームの限定アイテム"><label for="description">ひとこと</label><input id="description" maxlength="240" placeholder="例：おひとり分のおすそわけです。"><label for="links">配布リンク（1行に1件）</label><textarea id="links" required spellcheck="false" placeholder="https://…&#10;https://…"></textarea><p class="small">一度に100件まで。https のリンクのみ。重複は追加されません。</p><button class="primary">ストックに追加</button></form></section><section><h2>配布設定</h2><form id="settings"><label for="interval">受け取り後の間隔（分）</label><input id="interval" type="number" min="1" max="10080" required value="30"><p class="small">変更は次の受け取りから反映されます。現在の待ち時間は変わりません。</p><button class="secondary">設定を保存</button></form></section><section><h2>ストック</h2><p class="small">未配布リンクはここでも表示しません。削除すると配布対象から外れます。</p><ul id="queue"></ul></section></div></div></dialog>
+</body>
+</html>
